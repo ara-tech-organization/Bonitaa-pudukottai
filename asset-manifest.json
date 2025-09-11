@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Bonitaa-pudukottai/static/css/main.d8e1b4c5.css",
-    "main.js": "/Bonitaa-pudukottai/static/js/main.d20a2dbd.js",
+    "main.css": "/Bonitaa-pudukottai/static/css/main.761e5f7b.css",
+    "main.js": "/Bonitaa-pudukottai/static/js/main.9fe5a2ed.js",
     "static/media/Hero.png": "/Bonitaa-pudukottai/static/media/Hero.5380086eb5f6345b94ac.png",
     "static/media/h6.webp": "/Bonitaa-pudukottai/static/media/h6.153754c2d46eefcdd035.webp",
     "static/media/s1.webp": "/Bonitaa-pudukottai/static/media/s1.b1d2129613e9b7b7cee5.webp",
@@ -41,12 +41,16 @@
     "static/media/u4.svg": "/Bonitaa-pudukottai/static/media/u4.ce3e0f9b400a4ad75218ee037498161d.svg",
     "static/media/logo1.svg": "/Bonitaa-pudukottai/static/media/logo1.0c3e4a548cdf84d58a627f8224efd668.svg",
     "static/media/logo3.svg": "/Bonitaa-pudukottai/static/media/logo3.391b04b4c85b6517f6fddf626b804ede.svg",
+    "static/media/slick.svg": "/Bonitaa-pudukottai/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/Bonitaa-pudukottai/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/Bonitaa-pudukottai/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/Bonitaa-pudukottai/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Bonitaa-pudukottai/index.html",
-    "main.d8e1b4c5.css.map": "/Bonitaa-pudukottai/static/css/main.d8e1b4c5.css.map",
-    "main.d20a2dbd.js.map": "/Bonitaa-pudukottai/static/js/main.d20a2dbd.js.map"
+    "main.761e5f7b.css.map": "/Bonitaa-pudukottai/static/css/main.761e5f7b.css.map",
+    "main.9fe5a2ed.js.map": "/Bonitaa-pudukottai/static/js/main.9fe5a2ed.js.map"
   },
   "entrypoints": [
-    "static/css/main.d8e1b4c5.css",
-    "static/js/main.d20a2dbd.js"
+    "static/css/main.761e5f7b.css",
+    "static/js/main.9fe5a2ed.js"
   ]
 }
