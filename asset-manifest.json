@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Bonitaa-pudukottai/static/css/main.761e5f7b.css",
-    "main.js": "/Bonitaa-pudukottai/static/js/main.0a92d485.js",
+    "main.js": "/Bonitaa-pudukottai/static/js/main.bd61fabb.js",
     "static/media/Hero.png": "/Bonitaa-pudukottai/static/media/Hero.5380086eb5f6345b94ac.png",
     "static/media/h6.webp": "/Bonitaa-pudukottai/static/media/h6.153754c2d46eefcdd035.webp",
     "static/media/s1.webp": "/Bonitaa-pudukottai/static/media/s1.b1d2129613e9b7b7cee5.webp",
@@ -47,10 +47,10 @@
     "static/media/slick.ttf": "/Bonitaa-pudukottai/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/Bonitaa-pudukottai/static/media/slick.295183786cd8a1389865.woff",
     "main.761e5f7b.css.map": "/Bonitaa-pudukottai/static/css/main.761e5f7b.css.map",
-    "main.0a92d485.js.map": "/Bonitaa-pudukottai/static/js/main.0a92d485.js.map"
+    "main.bd61fabb.js.map": "/Bonitaa-pudukottai/static/js/main.bd61fabb.js.map"
   },
   "entrypoints": [
     "static/css/main.761e5f7b.css",
-    "static/js/main.0a92d485.js"
+    "static/js/main.bd61fabb.js"
   ]
 }
