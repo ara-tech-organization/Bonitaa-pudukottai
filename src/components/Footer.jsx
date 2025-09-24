@@ -2,23 +2,18 @@ import React, { useEffect } from "react";
 import { Box, Grid, Typography, Link, Divider } from "@mui/material";
 import { Facebook, Instagram, YouTube } from "@mui/icons-material";
 import logo from "../components/assets/Logo.png";
-import Decor14 from "../components/assets/14.png"; // 👈 decorative image
+import Decor14 from "../components/assets/14.png"; // decorative image
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link as RouterLink } from "react-router-dom";
 
 export default function FooterSplit() {
   useEffect(() => {
     AOS.init({ duration: 1200, once: true });
   }, []);
 
-  const quickLinks = [
-    "Home",
-    "About ",
-    "Services",
-    "Contact Us",
-    "Appointment",
-  ];
-  const policies = ["Refund Policy", "Terms & Conditions", "Privacy Policy"];
+  const quickLinks = ["Home", "About", "Services", "Contact Us", "Appointment"];
+  // const policies = ["Refund Policy", "Terms & Conditions", "Privacy Policy"];
 
   const linkStyle = {
     color: "inherit",
@@ -33,12 +28,11 @@ export default function FooterSplit() {
       sx={{
         bgcolor: "#0d0d0d",
         color: "#fff",
-        mt: 6,
         pt: 6,
         position: "relative",
       }}
     >
-      {/* Right-bottom dotted line */}
+      {/* Decorative Dotted Lines */}
       <Box
         sx={{
           position: "absolute",
@@ -64,7 +58,6 @@ export default function FooterSplit() {
         ))}
       </Box>
 
-      {/* Left-top dotted line */}
       <Box
         sx={{
           position: "absolute",
@@ -90,228 +83,211 @@ export default function FooterSplit() {
         ))}
       </Box>
 
-      {/* Top - Logo + Tagline */}
+      {/* Row - Footer Content */}
+    <Grid
+  container
+  spacing={4}
+  justifyContent="center"
+  textAlign={{ xs: "center", md: "left" }}
+  mb={5}
+  data-aos="fade-up"
+>
+  {/* Logo */}
+  <Grid size={{ xs: 12, md: 4, lg: 2 }} textAlign="center">
+    <img src={logo} alt="Bonitaa Logo" style={{ height: 70 }} />
+  </Grid>
+
+  {/* Contact */}
+  <Grid size={{ xs: 12, md: 4, lg: 2 }} ml={5}>
+    <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
+      Contact
+      <Typography mt={-2}>____________</Typography>
+    </Typography>
+
+    {/* Clickable address (Google Maps) */}
+    <Typography
+      component="a"
+      href="https://maps.google.com/?q=Jaya+Towers,+S+2,+Second+Floor,+East+Second+Street,+Pudukkottai+-+622001"
+      target="_blank"
+      rel="noopener noreferrer"
+      sx={{ display: "block", ...linkStyle }}
+    >
+      Jaya Towers, S 2, Second Floor, East Second <br />
+      Street, Pudukkottai - 622001
+    </Typography>
+
+    {/* Phone numbers */}
+    <Typography
+      component="a"
+      href="tel:+919691455668"
+      sx={{ mt: 1, display: "block", ...linkStyle }}
+    >
+      +91 96914 55668
+    </Typography>
+    <Typography
+      component="a"
+      href="tel:+918807122992"
+      sx={{ display: "block", ...linkStyle }}
+    >
+      +91 88071 22992
+    </Typography>
+
+    {/* Email */}
+    <Typography
+      component="a"
+      href="mailto:bonitaapudukkottai@gmail.com"
+      sx={{ mt: 1, display: "block", ...linkStyle }}
+    >
+      bonitaapudukkottai@gmail.com
+    </Typography>
+  </Grid>
+
+  {/* Quick Links */}
+   <Grid size={{ xs: 12, md: 3, lg: 2 }} ml={{ lg: 7 }}>
+      <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
+        Links
+        <Typography mt={-2}>________</Typography>
+      </Typography>
+
+      {/* Small/Medium screens */}
       <Box
-        data-aos="fade-up"
         sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 2,
-          mb: 3,
-          flexWrap: "wrap",
+          display: { xs: "flex", md: "none", lg: "none" },
+          flexDirection: "column",
+          gap: 1,
         }}
       >
-        <img src={logo} alt="Bonitaa Logo" style={{ height: 60 }} />
-        <Box>
-          <Typography
-            sx={{ color: "#D4AF37", fontSize: "1.3rem", fontWeight: "bold" }}
-          >
-            Transform Your Skin
-          </Typography>
-          <Typography sx={{ color: "#D4AF37" }}>
-            Transform Your Confidence
-          </Typography>
+        <Box sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
+          <Link component={RouterLink} to="/" sx={linkStyle}>
+            Home
+          </Link>
+          <Link component={RouterLink} to="/about" sx={linkStyle}>
+            About
+          </Link>
+        </Box>
+        <Box sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
+          <Link component={RouterLink} to="/services" sx={linkStyle}>
+            Services
+          </Link>
+          <Link component={RouterLink} to="/contact" sx={linkStyle}>
+            Contact Us
+          </Link>
+        </Box>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Link component={RouterLink} to="/appointment" sx={linkStyle}>
+            Appointment
+          </Link>
         </Box>
       </Box>
 
-      {/* Middle - Quick Links */}
-      <Box
-        data-aos="fade-up"
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          flexWrap: "wrap",
-          gap: 3,
-          mb: 3,
-        }}
-      >
+      {/* Large screens */}
+      <Box sx={{ display: { xs: "none", md: "block", lg: "block" } }}>
         {quickLinks.map((link, idx) => {
-          let href = "#";
+          let path = "/";
           switch (link) {
             case "Home":
-              href = "/";
+              path = "/";
               break;
-            case "About ":
-              href = "/about";
+            case "About":
+              path = "/about";
               break;
             case "Services":
-              href = "/services";
+              path = "/services";
               break;
             case "Contact Us":
-              href = "/contact";
+              path = "/contact";
               break;
             case "Appointment":
-              href = "/appointment";
+              path = "/appointment";
               break;
             default:
-              href = "#";
+              path = "/";
           }
           return (
-            <Link
-              key={idx}
-              href={href}
-              underline="hover"
-              sx={{
-                fontSize: "0.95rem",
-                color: "#fff", // default color
-                transition: "color 0.3s",
-                "&:hover, &:active": { color: "#D4AF37" },
-              }}
-            >
-              {link}
-            </Link>
+            <Typography key={idx} sx={{ mb: 1 }}>
+              <Link component={RouterLink} to={path} sx={linkStyle}>
+                {link}
+              </Link>
+            </Typography>
           );
         })}
       </Box>
+    </Grid>
 
-      {/* Bottom - Contact + Socials */}
-      <Grid
-        container
-        spacing={2}
-        alignItems="flex-start"
-        data-aos="fade-up"
-        sx={{
-          px: { xs: 3, md: 20 },
-          pb: 2,
-          mt: 5,
-          textAlign: { xs: "center", md: "center" },
-        }}
-      >
-        {/* Contact Us Heading */}
-        <Grid size={{ xs: 12, md: 2 }} textAlign="center">
-          <Typography
-            variant="subtitle1"
-            sx={{ color: "#f1c40f", fontWeight: "bold", mb: { xs: 1, md: 0 } }}
-          >
-            Contact Us
-          </Typography>
-        </Grid>
+  {/* Social */}
+  <Grid size={{ xs: 12, md: 4, lg: 2 }}>
+    <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
+      Follow Us
+      <Typography mt={-2}>_______________</Typography>
+    </Typography>
 
-        {/* Address */}
-        <Grid size={{ xs: 12, md: 3 }} textAlign="center">
-          <Typography
-            sx={linkStyle}
-            onClick={() =>
-              window.open(
-                "https://www.google.com/maps/search/?api=1&query=Jaya+Towers,+S+2,+Second+Floor,+East+Second+Street,+Pudukkottai+622001",
-                "_blank"
-              )
-            }
-          >
-            Jaya Towers, S 2, Second Floor,
-          </Typography>
-          <Typography
-            sx={linkStyle}
-            onClick={() =>
-              window.open(
-                "https://www.google.com/maps/search/?api=1&query=Jaya+Towers,+S+2,+Second+Floor,+East+Second+Street,+Pudukkottai+622001",
-                "_blank"
-              )
-            }
-          >
-            East Second Street,
-          </Typography>
-          <Typography
-            sx={linkStyle}
-            onClick={() =>
-              window.open(
-                "https://www.google.com/maps/search/?api=1&query=Jaya+Towers,+S+2,+Second+Floor,+East+Second+Street,+Pudukkottai+622001",
-                "_blank"
-              )
-            }
-          >
-            Pudukkottai - 622001
-          </Typography>
-        </Grid>
+    {/* Small/Medium screens */}
+    <Box
+      sx={{
+        display: { xs: "flex", md: "none", lg: "none" },
+        flexDirection: "column",
+        gap: 1,
+      }}
+    >
+      <Box sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
+        <Box component={Link} href="https://www.facebook.com/profile.php?id=61558681277636" sx={linkStyle}>
+          <Facebook sx={{ mr: 1, verticalAlign: "middle" }} />
+          Facebook
+        </Box>
+        <Box component={Link} href="#" sx={linkStyle}>
+          <YouTube sx={{ mr: 1, verticalAlign: "middle" }} />
+          Youtube
+        </Box>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box component={Link} href="https://www.instagram.com/bonitaa_skin_hair_pudukkottai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" sx={linkStyle}>
+          <Instagram sx={{ mr: 1, verticalAlign: "middle" }} />
+          Instagram
+        </Box>
+      </Box>
+    </Box>
 
-        {/* Phones + Email */}
-        <Grid size={{ xs: 12, md: 3 }} textAlign="center">
-          <Typography
-            sx={linkStyle}
-            onClick={() => (window.location.href = "tel:+919691455668")}
-          >
-            +91 96914 55668
-          </Typography>
-          <Typography
-            sx={linkStyle}
-            onClick={() => (window.location.href = "tel:+918807122992")}
-          >
-            +91 88071 22992
-          </Typography>
-          <Typography
-            sx={linkStyle}
-            onClick={() =>
-              (window.location.href = "mailto:customercare@bonitaa.co.in")
-            }
-          >
-            customercare@bonitaa.co.in
-          </Typography>
-        </Grid>
+    {/* Large screens */}
+    <Box
+      sx={{
+        display: { xs: "none", lg: "flex", md: "flex" },
+        flexDirection: "column",
+        gap: 1,
+      }}
+    >
+      <Box component={Link} href="https://www.facebook.com/profile.php?id=61558681277636" sx={linkStyle}>
+        <Facebook sx={{ mr: 1, verticalAlign: "middle" }} />
+        Facebook
+      </Box>
+      <Box component={Link} href="https://www.instagram.com/bonitaa_skin_hair_pudukkottai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" sx={linkStyle}>
+        <Instagram sx={{ mr: 1, verticalAlign: "middle" }} />
+        Instagram
+      </Box>
+      <Box component={Link} href="#" sx={linkStyle}>
+        <YouTube sx={{ mr: 1, verticalAlign: "middle" }} />
+        Youtube
+      </Box>
+    </Box>
+  </Grid>
 
-        {/* Social Icons */}
-        <Grid
-          size={{ xs: 12, md: 4 }}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: { xs: "center", md: "flex-start" },
-            gap: 3,
-            flexWrap: "wrap",
-          }}
-        >
-          <Box
-            component={Link}
-            href="#"
-            underline="none"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 1,
-              color: "#fff",
-              transition: "color 0.3s",
-              "&:hover, &:active": { color: "#D4AF37" },
-            }}
-          >
-            <Facebook />
-            <Typography>Facebook</Typography>
-          </Box>
+  {/* Map */}
+  <Grid size={{ xs: 12, md: 6, lg: 3 }}>
+    <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
+      Location
+      <Typography mt={-2}>______________</Typography>
+    </Typography>
+    <iframe
+      title="Bonitaa Location"
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3924.463876271187!2d78.824014!3d10.384683!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00790e6a71da2f%3A0xe880e8d244cf23da!2sBonitaa%20Skin%20and%20Hair%20Care!5e0!3m2!1sen!2sin!4v1757332718439!5m2!1sen!2sin" 
+      width="80%"
+      height="200"
+      style={{ border: 0, borderRadius: "8px" }}
+      allowFullScreen=""
+      loading="lazy"
+    ></iframe>
+  </Grid>
+</Grid>
 
-          <Box
-            component={Link}
-            href="#"
-            underline="none"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 1,
-              color: "#fff",
-              transition: "color 0.3s",
-              "&:hover, &:active": { color: "#D4AF37" },
-            }}
-          >
-            <Instagram />
-            <Typography>Instagram</Typography>
-          </Box>
-
-          <Box
-            component={Link}
-            href="#"
-            underline="none"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 1,
-              color: "#fff",
-              transition: "color 0.3s",
-              "&:hover, &:active": { color: "#D4AF37" },
-            }}
-          >
-            <YouTube />
-            <Typography>Youtube</Typography>
-          </Box>
-        </Grid>
-      </Grid>
 
       {/* Divider with 14.png */}
       <Box sx={{ position: "relative" }}>
@@ -336,7 +312,7 @@ export default function FooterSplit() {
         <Typography variant="body2" sx={{ color: "#aaa", mb: 1 }}>
           © 2025 Bonitaa Skin & Hair Care | All Rights Reserved
         </Typography>
-        <Box>
+        {/* <Box>
           {policies.map((policy, idx) => (
             <Link
               key={idx}
@@ -352,7 +328,7 @@ export default function FooterSplit() {
               {policy}
             </Link>
           ))}
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );

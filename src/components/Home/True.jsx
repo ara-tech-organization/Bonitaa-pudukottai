@@ -39,19 +39,19 @@ export default function StatsSection() {
       sx={{
         backgroundColor: "black",
         py: 6,
-        px: { xs: 2, md: 6 },
+        px: { xs:2, md: 15 },
         color: "white",
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
         justifyContent: { xs: "center", md: "space-between" },
         alignItems: "center",
         textAlign: { xs: "center", md: "left" },
-        gap: 6,
+        gap: 10,
       }}
       data-aos="fade-up"
     >
       {/* Left Side Content */}
-      <Box sx={{ maxWidth: { xs: "100%", md: 420 } }}>
+      <Box ml={{md:1,lg:6,xs:0}} sx={{ maxWidth: { xs: "100%", md: 420 }   }}  data-aos="fade-up">
         <Typography
           variant="h5"
           sx={{
@@ -76,7 +76,7 @@ export default function StatsSection() {
           yourself.
         </Typography>
 
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1, justifyContent: "center" }}>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1, justifyContent:{lg:"left",xs:'center',md:'left'} }}>
           <PhoneIcon sx={{ color: "#D4AF37" }} />
           <Typography variant="body1" sx={{ fontWeight: "bold" }}>
             +91 96914 55666
@@ -94,10 +94,8 @@ export default function StatsSection() {
         >
           {statsData.map((item, index) => (
             <Grid
-              item
-              xs={12} // center all items on xs
-              sm={6}
-              md={4}
+              size={{xs:12,sm:6,md:6,lg:4}}
+             
               key={index}
               sx={{ textAlign: "center" }}
               data-aos="zoom-in"

@@ -59,7 +59,7 @@ export default function HowWeWork() {
               width: { xs: "80%", sm: "60%", md: "100%" }, // responsive width
               maxWidth: 500,
                 border:'3px solid #D4AF37',
-              borderRadius: "50% / 40%", // oval shape
+              borderRadius: "20px", // oval shape
               objectFit: "cover",
             }}
           />

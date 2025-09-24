@@ -154,8 +154,10 @@ const TestimonialFlipCards = () => {
         sx={{
           display: "flex",
           flexWrap: "wrap",
-          gap: 4,
-          justifyContent: "center",
+          justifyContent: "center", // 🔑 center horizontally
+          alignItems: "center", // 🔑 center vertically (for equal height rows)
+          gap: 15, // 🔑 spacing between cards
+          mb:7
         }}
       >
         {testimonials.map((item, index) => (

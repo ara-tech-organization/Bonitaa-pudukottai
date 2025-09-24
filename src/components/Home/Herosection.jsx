@@ -25,10 +25,10 @@ function HeroSection() {
       }}
     >
       {/* Floating Decorative Image */}
-      <Box
+      {/* <Box
         component="img"
         src={F4Image}
-        alt="Decorative F4"
+        alt=" Foral Decorative image"
         sx={{
           position: "absolute",
           bottom: { xs: "5%", md: "70%" },
@@ -38,10 +38,10 @@ function HeroSection() {
           animation: "floatLoop 10s ease-in-out infinite",
         }}
         data-aos="fade-up"
-      />
+      /> */}
 
       {/* Floating Circles */}
-      <Box
+      {/* <Box
         sx={{
           position: "absolute",
           bottom: { xs: "5%", md: "10%" },
@@ -52,8 +52,8 @@ function HeroSection() {
           borderRadius: "50%",
           opacity: 0.8,
         }}
-      />
-      <Box
+      /> */}
+      {/* <Box
         sx={{
           position: "absolute",
           top: { xs: "8%", md: "4%" },
@@ -64,7 +64,7 @@ function HeroSection() {
           borderRadius: "50%",
           opacity: 0.8,
         }}
-      />
+      /> */}
 
       <Grid container spacing={4} alignItems="center">
         {/* Left Image */}
@@ -76,7 +76,7 @@ function HeroSection() {
             data-aos="fade-up"
             sx={{
               width: "100%",
-              border: "3px solid #D4AF37",
+              border: "3px solid white",
               height: { xs: 220, sm: 300, md: 450 },
               objectFit: "cover",
               borderRadius: 2,
@@ -87,7 +87,7 @@ function HeroSection() {
         {/* Right Content */}
         <Grid size={{xs:12,md:6}} >
           <Box
-            data-aos="fade-down"
+            data-aos="fade-up"
             sx={{
               textAlign: { xs: "center", md: "left" },
               display: "flex",

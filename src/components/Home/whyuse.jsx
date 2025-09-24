@@ -1,4 +1,4 @@
-import { Box, Typography, Paper, Grid } from "@mui/material";
+import { Box, Typography, Card, CardContent, Grid } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
@@ -7,7 +7,7 @@ import Logo1 from "../assets/u1.svg";
 import Logo2 from "../assets/u2.svg";
 import Logo3 from "../assets/u3.svg";
 import Logo4 from "../assets/u4.svg";
-import F5Image from "../assets/f5.webp"; // 👈 decorative image
+// import F5Image from "../assets/f5.webp"; // center image commented out as in your last version
 
 const features = [
   {
@@ -41,69 +41,50 @@ export default function WhyChooseUs() {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
-  const CircleCard = ({ item }) => (
-    <Box
+  const FeatureCard = ({ item }) => (
+    <Card
       data-aos="zoom-in"
       sx={{
-        width: 260,
-        height: 260,
-        borderRadius: "50%",
-        border: "3px solid black",
+        height: 300, // all cards same height
+        p: 3,
+        textAlign: "center",
+        borderRadius: 2, // ~10px
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
         display: "flex",
-        alignItems: "center",
+        flexDirection: "column",
         justifyContent: "center",
-        mx: "auto",
+        "&:hover": {
+          transform: "translateY(-6px)",
+          boxShadow: "0 6px 20px rgba(0,0,0,0.25)",
+        },
       }}
     >
-      <Paper
-        elevation={0}
+      <Box
         sx={{
-          width: 220,
-          height: 220,
+          width: 60,
+          height: 60,
           borderRadius: "50%",
-          p: 2,
-          border: "3px solid #D4AF37",
+          backgroundColor: item.bg,
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          textAlign: "center",
-          transition: "transform 0.3s ease, box-shadow 0.3s ease",
-          "&:hover": {
-            transform: "translateY(-6px)",
-            boxShadow: "0 6px 20px rgba(0,0,0,0.25)",
-          },
+          mb: 2,
+          mx: "auto",
         }}
       >
-        <Box
-          sx={{
-            width: 60,
-            height: 60,
-            borderRadius: "50%",
-            backgroundColor: item.bg,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            mb: 1,
-          }}
-        >
-          <img
-            src={item.icon}
-            alt={item.title}
-            style={{ width: "50%", height: "50%", objectFit: "contain" }}
-          />
-        </Box>
-        <Typography
-          variant="h6"
-          sx={{ fontWeight: "bold", mb: 1, fontFamily: "Kurale, serif" }}
-        >
-          {item.title}
-        </Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary", px: 1 }}>
-          {item.desc}
-        </Typography>
-      </Paper>
-    </Box>
+        <img
+          src={item.icon}
+          alt={item.title}
+          style={{ width: "50%", height: "50%", objectFit: "contain" }}
+        />
+      </Box>
+      <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+        {item.title}
+      </Typography>
+      <Typography variant="body2" sx={{ color: "text.secondary" }}>
+        {item.desc}
+      </Typography>
+    </Card>
   );
 
   return (
@@ -111,44 +92,9 @@ export default function WhyChooseUs() {
       {/* Heading */}
       <Typography
         data-aos="fade-down"
-        sx={{ fontWeight: "bold", fontSize: "1.2rem", color: "#D4AF37" }}
+        sx={{ fontWeight: "bold", fontSize: "1.2rem", color: "#D4AF37", mb: 2 }}
       >
-        <Box
-          sx={{
-            position: "absolute",
-            top: { xs: "10%", md: "1500%" },
-            left: { xs: "5%", md: "1%" },
-            width: { xs: 40, md: 20 },
-            height: { xs: 40, md: 20 },
-            bgcolor: "black",
-            borderRadius: "50%",
-            opacity: 0.8,
-          }}
-        />
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: { xs: "5%", md: "50%" },
-            right: { xs: "5%", md: "5%" },
-            width: { xs: 40, md: 20 },
-            height: { xs: 40, md: 20 },
-            bgcolor: "#D4AF37",
-            borderRadius: "50%",
-            opacity: 0.8,
-          }}
-        />
-        <Box
-          component="span"
-          sx={{
-            width: 12,
-            height: 12,
-            bgcolor: "#D4AF37",
-            display: "inline-block",
-            transform: "rotate(45deg)",
-            mr: 2,
-          }}
-        />
-        Why Choose Us ?
+        Why Choose Us?
       </Typography>
       <Typography
         variant="h4"
@@ -158,81 +104,36 @@ export default function WhyChooseUs() {
         Why People Trust Bonitaa Skin & Hair Care Clinic In Pudukkottai
       </Typography>
 
-      {/* Layout: 2 left circles | center image | 2 right circles */}
-      <Grid
-        container
-        spacing={6}
-        alignItems="center"
-        justifyContent="center"
-        textAlign={{ xs: "center", sm: "center", md: "inherit" }}
-      >
-        {/* Left 2 circles */}
-        <Grid  size={{xs:12,md:4}}>
-          <Grid
-            container
-            spacing={4}
-            direction="column"
-            alignItems={{ xs: "center", sm: "center", md: "center" }}
-            justifyContent={{ xs: "center", sm: "center", md: "flex-start" }}
-          >
-            <Grid  size>
-              <CircleCard item={features[0]} />
-            </Grid>
-            <Grid  size>
-              <CircleCard item={features[1]} />
-            </Grid>
+      {/* Grid Layout */}
+      <Grid container spacing={4} alignItems="center" justifyContent="center"  data-aos="fade-down">
+        {/* Left 2 cards */}
+        {features.slice(0, 2).map((feature, index) => (
+          <Grid size={{xs:12,sm:6,md:3}}  key={index}>
+            <FeatureCard item={feature} />
           </Grid>
-        </Grid>
+        ))}
 
-        {/* Center image */}
-        <Grid
-           size={{xs:12,md:4}}
-         
-          
-          display="flex"
-          justifyContent={{ xs: "center", sm: "center", md: "center" }}
-        >
+        {/* Center image commented out */}
+        {/* <Grid item xs={12} md={3} display="flex" justifyContent="center">
           <Box
             component="img"
             src={F5Image}
-            alt="Decorative Center"
+            alt="Decorative Design"
             sx={{
-              width: { xs: 180, md: 260 },
+              width: { xs: 180, md: 200 },
               height: "auto",
               animation: "floatLoop 6s ease-in-out infinite",
             }}
           />
-        </Grid>
+        </Grid> */}
 
-        {/* Right 2 circles */}
-        <Grid  size={{xs:12,md:4}}>
-          <Grid
-            container
-            spacing={4}
-            direction="column"
-            alignItems={{ xs: "center", sm: "center", md: "center" }}
-            justifyContent={{ xs: "center", sm: "center", md: "flex-start" }}
-          >
-            <Grid  size>
-              <CircleCard item={features[2]} />
-            </Grid>
-            <Grid size>
-              <CircleCard item={features[3]} />
-            </Grid>
+        {/* Right 2 cards */}
+        {features.slice(2, 4).map((feature, index) => (
+          <Grid size={{xs:12,sm:6,md:3}} key={index}>
+            <FeatureCard item={feature} />
           </Grid>
-        </Grid>
+        ))}
       </Grid>
-
-      {/* Floating animation */}
-      <style>
-        {`
-          @keyframes floatLoop {
-            0%   { transform: translateY(0); }
-            50%  { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
-          }
-        `}
-      </style>
     </Box>
   );
 }

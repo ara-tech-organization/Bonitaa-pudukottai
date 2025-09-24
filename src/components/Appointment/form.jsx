@@ -11,14 +11,10 @@ import {
   Alert,
 } from "@mui/material";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // ✅ navigate hook
 import BgImage from "../assets/Hero.png"; // <-- replace with your image path
 
-const treatments = [
-  "Skin Treatment",
-  "Hair Treatment",
-  "Laser Therapy",
-  "Anti-Aging",
-];
+const treatments = ["Skin Treatment", "Hair Treatment"];
 
 export default function AppointmentFormWhite() {
   const [formData, setFormData] = useState({
@@ -37,6 +33,8 @@ export default function AppointmentFormWhite() {
     message: "",
     severity: "success",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -80,11 +78,18 @@ export default function AppointmentFormWhite() {
     }
   };
 
+  // ✅ Snackbar close → navigate to Thank You page
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") return;
+    setSnackbar({ ...snackbar, open: false });
+    if (snackbar.severity === "success") {
+      navigate("/thankyou");
+    }
+  };
+
   // ✅ Glassmorphic style for input fields
   const glassTextField = {
     "& .MuiInputBase-root": {
-      // backgroundColor: "rgba(255,255,255,0.15)",
-      // backdropFilter: "blur(8px)",
       borderRadius: "10px",
       color: "#fff",
     },
@@ -108,7 +113,11 @@ export default function AppointmentFormWhite() {
       color: "#fff",
     },
     "& .MuiSvgIcon-root": {
-      color: "#fff", // ✅ icons like calendar & clock white on dark bg
+      color: "#fff", // ✅ Material-UI icons
+    },
+    "& input[type='date']::-webkit-calendar-picker-indicator, \
+   & input[type='time']::-webkit-calendar-picker-indicator": {
+      filter: "invert(1)", // ✅ makes calendar/clock icon white
     },
   };
 
@@ -120,7 +129,8 @@ export default function AppointmentFormWhite() {
         alignItems: "center",
         justifyContent: "center",
         px: 2,
-        mt:-10,
+        mt: -6,
+        py: 3,
         backgroundImage: `url(${BgImage})`, // ✅ Background image
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -131,7 +141,7 @@ export default function AppointmentFormWhite() {
       <Paper
         elevation={6}
         sx={{
-          width: { xs: "100%", sm: "80%", md: "60%" },
+          width: { xs: "100%", sm: "80%", md: "50%" },
           p: 4,
           borderRadius: 3,
           border: "5px solid white",
@@ -152,7 +162,7 @@ export default function AppointmentFormWhite() {
         </Typography>
 
         <Grid container spacing={2}>
-          <Grid size={{xs:12,md:6}} >
+          <Grid size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
               label="First Name *"
@@ -162,17 +172,17 @@ export default function AppointmentFormWhite() {
               sx={glassTextField}
             />
           </Grid>
-          <Grid size={{xs:12,md:6}}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
-              label="Last Name *"
+              label="Last Name"
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
               sx={glassTextField}
             />
           </Grid>
-          <Grid size={{xs:12,md:6}}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
               label="Mobile *"
@@ -182,7 +192,7 @@ export default function AppointmentFormWhite() {
               sx={glassTextField}
             />
           </Grid>
-          <Grid size={{xs:12,md:6}}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
               label="Email *"
@@ -192,7 +202,7 @@ export default function AppointmentFormWhite() {
               sx={glassTextField}
             />
           </Grid>
-          <Grid size={{xs:12,md:6}}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
               type="date"
@@ -204,7 +214,7 @@ export default function AppointmentFormWhite() {
               sx={glassTextField}
             />
           </Grid>
-          <Grid size={{xs:12,md:6}}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <TextField
               fullWidth
               type="time"
@@ -216,7 +226,7 @@ export default function AppointmentFormWhite() {
               sx={glassTextField}
             />
           </Grid>
-          <Grid size={{xs:12,md:12}}>
+          <Grid size={{ xs: 12, md: 12 }}>
             <TextField
               select
               fullWidth
@@ -233,7 +243,7 @@ export default function AppointmentFormWhite() {
               ))}
             </TextField>
           </Grid>
-          <Grid size={{xs:12,md:12}}>
+          <Grid size={{ xs: 12, md: 12 }}>
             <TextField
               fullWidth
               multiline
@@ -272,7 +282,7 @@ export default function AppointmentFormWhite() {
       <Snackbar
         open={snackbar.open}
         autoHideDuration={4000}
-        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        onClose={handleSnackbarClose}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert severity={snackbar.severity} sx={{ width: "100%" }}>

@@ -8,6 +8,8 @@ import {
   TextField,
   Button,
   MenuItem,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -15,6 +17,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function ContactWithMap() {
   const [formData, setFormData] = useState({
@@ -28,6 +31,9 @@ export default function ContactWithMap() {
     Message: "",
   });
 
+  const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "success" });
+  const navigate = useNavigate();
+
   useEffect(() => {
     AOS.init({ duration: 1200, once: true });
   }, []);
@@ -39,12 +45,18 @@ export default function ContactWithMap() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
+      await axios.post(
         "https://bonitaa-dvcfa6dwdvaxeagp.centralindia-01.azurewebsites.net/api/bookAppointment",
         formData,
         { headers: { "Content-Type": "application/json" } }
       );
-      alert(res.data.Message || "✅ Appointment booked successfully!");
+
+      setSnackbar({
+        open: true,
+        message: "✅ Appointment booked successfully!",
+        severity: "success",
+      });
+
       setFormData({
         FirstName: "",
         LastName: "",
@@ -55,9 +67,18 @@ export default function ContactWithMap() {
         Treatment: "",
         Message: "",
       });
+
+      // ✅ Navigate after short delay
+      setTimeout(() => {
+        navigate("/thankyou");
+      }, 2000);
     } catch (err) {
       console.error(err);
-      alert("❌ Failed to send appointment. Please try again.");
+      setSnackbar({
+        open: true,
+        message: "❌ Failed to send appointment. Please try again.",
+        severity: "error",
+      });
     }
   };
 
@@ -124,12 +145,12 @@ export default function ContactWithMap() {
                 <Box
                   sx={{ display: "flex", alignItems: "center", gap: 2, cursor: "pointer" }}
                   onClick={() =>
-                    (window.location.href = "mailto:customercare@bonitaa.co.in")
+                    (window.location.href = "mailto:bonitaapudukkottai@gmail.com")
                   }
                 >
                   <EmailIcon />
                   <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                    customercare@bonitaa.co.in
+                    bonitaapudukkottai@gmail.com
                   </Typography>
                 </Box>
 
@@ -199,7 +220,6 @@ export default function ContactWithMap() {
                         value={formData.LastName}
                         onChange={handleChange}
                         fullWidth
-                        required
                       />
                     </Grid>
 
@@ -299,6 +319,23 @@ export default function ContactWithMap() {
           </Grid>
         </CardContent>
       </Card>
+
+      {/* ✅ Snackbar */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={1500}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          onClose={() => setSnackbar({ ...snackbar, open: false })}
+          severity={snackbar.severity}
+          variant="filled"
+          sx={{ width: "100%" }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }

@@ -2,17 +2,63 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/logo.png" /> <!-- 👈 your logo -->
+    <link rel="icon" href="%PUBLIC_URL%/Logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Botinaa" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" /> <!-- 👈 your logo -->
-    <link href="https://fonts.googleapis.com/css2?family=Kurale&display=swap" rel="stylesheet" />
+
+    <!-- ✅ SEO Title & Description -->
+    <title>Bonitaa – Premium Salon & Skin Clinic in Pudukottai</title>
+    <meta
+      name="description"
+      content="Book your consultation today and step into a world of healthy hair and glowing skin with Bonitaa’s expert care. 🌿✨"
+    />
+    <meta
+      name="keywords"
+      content="Book your consultation today and step into a world of healthy hair and glowing skin with Bonitaa’s expert care. 🌿✨"
+    />
+
+    <!-- ✅ Open Graph / Facebook -->
+    <meta property="og:title" content="Bonitaa – Premium Salon & Skin Clinic in Pudukottai" />
+    <meta property="og:description" content="Book your consultation today and step into a world of healthy hair and glowing skin with Bonitaa’s expert care. 🌿✨" />
+    <meta property="og:image" content="%PUBLIC_URL%/Logo.png" />
+    <meta property="og:url" content="https://bonitaapudukkottai.in/" />
+    <meta property="og:type" content="website" />
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bonitaa – Premium Salon & Skin Clinic in Pudukottai" />
+    <meta name="twitter:description" content="Book your consultation today and step into a world of healthy hair and glowing skin with Bonitaa’s expert care. 🌿✨" />
+    <meta name="twitter:image" content="%PUBLIC_URL%/Logo.png" />
+    <meta name="twitter:url" content="https://bonitaapudukkottai.in/" />
+
+    <!-- App Icons & Manifest -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/Logo.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Botinaa - Pudhukottai</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kurale&display=swap" rel="stylesheet" />
+
+    <!-- ✅ Google Tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17494196458"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17494196458');
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <!-- ✅ Google Ads Conversion Event Example -->
+    <script>
+      // Example: Conversion trigger (adjust 'value' and 'currency' as needed)
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17494196458/YourConversionID',
+        'value': 1.0,
+        'currency': 'INR'
+      });
+    </script>
   </body>
 </html>

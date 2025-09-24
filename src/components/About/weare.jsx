@@ -34,13 +34,13 @@ const TreatmentTabs = () => {
     AOS.init({ duration: 1200, once: true });
   }, []);
 
-  // Auto-slide effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setValue((prev) => (prev + 1) % treatments.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+  // // // Auto-slide effect
+  // // useEffect(() => {
+  // //   const interval = setInterval(() => {
+  // //     setValue((prev) => (prev + 1) % treatments.length);
+  // //   }, 4000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -156,7 +156,7 @@ const TreatmentTabs = () => {
             sx={{
               fontWeight: "bold",
               color: "#D4AF37",
-              borderBottom: "3px solid #D4AF37",
+              borderBottom: "2px solid #D4AF37",
               display: "inline-block",
               pb: 0.5,
             }}
@@ -192,7 +192,7 @@ const TreatmentTabs = () => {
           maxWidth: { xs: "90%", md: 650 },
           mx: "auto",
           borderRadius: 4,
-          border: "3px solid #000",
+          border: "1px solid #000",
           textAlign: "center",
           bgcolor: "white",
           transition: "all 0.5s ease",

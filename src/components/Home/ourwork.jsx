@@ -42,20 +42,19 @@ export default function HowWeWork() {
         {/* Left: Image */}
         <Grid
           size={{xs:12,md:5}}
-        
           sx={{ display: "flex", justifyContent: "center" }}
           data-aos="fade-up"
         >
           <Box
             component="img"
             src={SkinImg}
-            alt="Skin Treatment"
+            alt="Skin Treatment in Pudukottai"
             sx={{
               width: "100%",
               maxWidth: 480,
-              borderRadius: "50% / 40%", // oval shape
+              borderRadius: "30px", // oval shape
               objectFit: "cover",
-              border: "3px solid #D4AF37",
+              border: "4px solid #D4AF37",
             }}
           />
         </Grid>
@@ -127,6 +126,7 @@ export default function HowWeWork() {
               >
                 <Box
                   component="img"
+                
                   src={step.icon}
                   alt={step.title}
                   sx={{ width: 40, height: 40 }}

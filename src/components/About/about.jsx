@@ -1,7 +1,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import Image from "../assets/hero2.avif";
-import F3Image from "../assets/f3.png"; // 👈 left top decorative image
-import F4Image from "../assets/f1.png"; // 👈 bottom decorative image
+// import F3Image from "../assets/f3.png"; // 👈 left top decorative image
+// import F4Image from "../assets/f1.png"; // 👈 bottom decorative image
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import AOS from "aos";
@@ -24,10 +24,10 @@ function VisionMissionSection() {
       }}
     >
       {/* Decorative F3 Image (left top) */}
-      <Box
+      {/* <Box
         component="img"
         src={F3Image}
-        alt="Decorative F3"
+        alt=" Foral Decorative Design"
         sx={{
           position: "absolute",
           top: { xs: "20px", md: "40px" },
@@ -38,13 +38,13 @@ function VisionMissionSection() {
           animation: "floatLoop 6s ease-in-out infinite",
           zIndex: 1,
         }}
-      />
+      /> */}
 
       {/* Decorative F4 Image (bottom right) */}
-      <Box
+      {/* <Box
         component="img"
         src={F4Image}
-        alt="Decorative F4"
+        alt=" Foral Decorative Design"
         sx={{
           position: "absolute",
           bottom: { xs: "5%", md: "5%" },
@@ -54,7 +54,7 @@ function VisionMissionSection() {
           animation: "floatLoop 10s ease-in-out infinite", // slow loop
         }}
         data-aos="fade-up"
-      />
+      /> */}
 
       {/* Top: About Section */}
       <Box
@@ -115,7 +115,7 @@ function VisionMissionSection() {
         {/* Left Column: Vision & Mission stacked */}
         <Grid size={{xs:12,md:6}} >
           <Box
-            data-aos="fade-right"
+            data-aos="fade-up"
             sx={{
               bgcolor: "#D4AF37",
               borderRadius: "16px",
@@ -135,7 +135,7 @@ function VisionMissionSection() {
           </Box>
 
           <Box
-            data-aos="fade-right"
+            data-aos="fade-up"
             sx={{
               bgcolor: "#D4AF37",
               borderRadius: "16px",

@@ -69,11 +69,13 @@ function Header() {
             data-aos="fade-right"
             sx={clickableStyle}
             onClick={() =>
-              (window.location.href = "mailto:customercare@bonitaa.co.in")
+              (window.location.href = "mailto:bonitaapudukkottai@gmail.com")
             }
           >
             <EmailIcon fontSize="small" />
-            <Typography variant="body2">customercare@bonitaa.co.in</Typography>
+            <Typography variant="body2">
+              bonitaapudukkottai@gmail.com
+            </Typography>
           </Box>
 
           <Box
@@ -98,18 +100,24 @@ function Header() {
         <Box data-aos="fade-left" sx={{ display: "flex", gap: 1 }}>
           <IconButton
             sx={{ color: "black", "&:hover": { color: "#D4AF37" } }}
-            onClick={() => window.open("https://www.facebook.com", "_blank")}
+            component="a"
+            href="https://www.facebook.com/profile.php?id=61558681277636"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FacebookIcon />
           </IconButton>
+
           <IconButton
             sx={{ color: "black", "&:hover": { color: "#D4AF37" } }}
-            onClick={() =>
-              window.open("https://www.instagram.com", "_blank")
-            }
+            component="a"
+            href="https://www.instagram.com/bonitaa_skin_hair_pudukkottai?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <InstagramIcon />
           </IconButton>
+
           <IconButton
             sx={{ color: "black", "&:hover": { color: "#D4AF37" } }}
             onClick={() => window.open("https://www.youtube.com", "_blank")}

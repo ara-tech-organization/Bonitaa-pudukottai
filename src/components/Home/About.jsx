@@ -86,7 +86,7 @@ function VisionMissionSection() {
         {/* Left Column */}
         <Grid size={{xs:12,md:6}}>
           <Box
-            data-aos="fade-down"
+            data-aos="fade-up"
             sx={{
               bgcolor: "#D4AF37",
               borderRadius: "16px",
@@ -132,7 +132,7 @@ function VisionMissionSection() {
           <Box
             component="img"
             src={Image}
-            alt="Clinic"
+           alt="Bonitaa Beauty Spa"
             data-aos="zoom-in"
             sx={{
               maxWidth: { xs: "100%", sm: "400px" },

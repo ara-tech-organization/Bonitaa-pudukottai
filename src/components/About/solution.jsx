@@ -3,6 +3,7 @@ import BgImage from "../assets/Hero.png"; // replace with your background image
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function SkinHairSection() {
   useEffect(() => {
@@ -13,15 +14,15 @@ export default function SkinHairSection() {
     <Box
       sx={{
         position: "relative",
-        width: "100%",
-        minHeight: "70vh",
+        width: "92%",
+        minHeight: { xs: "80vh", md: "70vh" }, // taller on small devices
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         color: "white",
         textAlign: "center",
-        px: 4,
-        py: 10,
+        px: { xs: 2, sm: 4, md: 6, lg: 8 },
+        py: { xs: 6, sm: 8, md: 10 },
         backgroundImage: `url(${BgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -38,20 +39,44 @@ export default function SkinHairSection() {
 
       {/* Content */}
       <Box
-        sx={{ position: "relative", maxWidth: "800px" }}
+        sx={{
+          position: "relative",
+          maxWidth: { xs: "100%", sm: "600px", md: "800px" },
+        }}
         data-aos="fade-up"
       >
+        {/* Title */}
         <Typography
           variant="h3"
-          sx={{ fontWeight: "bold", mb: 3, lineHeight: 1.4 }}
-          data-aos="fade-down"
+          sx={{
+            fontWeight: "bold",
+            mb: { xs: 2, sm: 3 },
+            lineHeight: 1.3,
+            fontSize: {
+              xs: "1.8rem", // phones
+              sm: "2.2rem", // tablets
+              md: "2.8rem", // laptops
+              lg: "3.2rem", // desktops
+            },
+          }}
+          data-aos="fade-up"
         >
           Personalized Skin & Hair Solutions That Show Real Progress
         </Typography>
 
+        {/* Paragraph */}
         <Typography
           variant="body1"
-          sx={{ mb: 4, fontSize: "1.1rem" }}
+          sx={{
+            mb: { xs: 3, sm: 4 },
+            fontSize: {
+              xs: "0.95rem",
+              sm: "1rem",
+              md: "1.1rem",
+              lg: "1.15rem",
+            },
+            lineHeight: 1.6,
+          }}
           data-aos="fade-up"
           data-aos-delay={200}
         >
@@ -62,23 +87,26 @@ export default function SkinHairSection() {
           helping you feel confident with care that works from the inside out.
         </Typography>
 
-      <Button
-  variant="contained"
-  href="/appointment"   // 👈 direct link
-  sx={{
-    bgcolor: "#D4AF37",
-    color: "black",
-    fontWeight: "bold",
-    px: 4,
-    py: 1.5,
-    "&:hover": { bgcolor: "#c09c32" },
-  }}
-  data-aos="zoom-in"
-  data-aos-delay={400}
->
-  Book a Consultation
-</Button>
-
+        {/* Button */}
+        <Button
+          variant="contained"
+          component={Link}
+          to="/appointment"
+          sx={{
+            bgcolor: "#D4AF37",
+            color: "black",
+            fontWeight: "bold",
+            px: { xs: 3, sm: 4, md: 5 },
+            py: { xs: 1, sm: 1.2, md: 1.5 },
+            fontSize: { xs: "0.9rem", sm: "1rem", md: "1.05rem" },
+            borderRadius: "8px",
+            "&:hover": { bgcolor: "#c09c32" },
+          }}
+          data-aos="zoom-in"
+          data-aos-delay={400}
+        >
+          Book a Consultation
+        </Button>
       </Box>
     </Box>
   );
