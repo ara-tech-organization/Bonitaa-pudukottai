@@ -14,7 +14,7 @@ function Home() {
 
   // 👇 Page load aana udane title set aagum
   useEffect(() => {
-    document.title = "Home | Botinaa – Pudhukottai";
+    document.title = "Bonitaa – Premium Salon & Skin Clinic in Pudukottai";
   }, []);
 
   return (
