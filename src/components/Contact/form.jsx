@@ -31,7 +31,12 @@ export default function ContactWithMap() {
     Message: "",
   });
 
-  const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "success" });
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,6 +49,18 @@ export default function ContactWithMap() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // ✅ Validate Mobile number (only digits & exactly 10)
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(formData.Mobile)) {
+      setSnackbar({
+        open: true,
+        message: "❌ Invalid phone number. Enter a 10-digit number.",
+        severity: "error",
+      });
+      return;
+    }
+
     try {
       await axios.post(
         "https://bonitaa-dvcfa6dwdvaxeagp.centralindia-01.azurewebsites.net/api/bookAppointment",
@@ -124,7 +141,12 @@ export default function ContactWithMap() {
                 }}
               >
                 <Box
-                  sx={{ display: "flex", alignItems: "center", gap: 2, cursor: "pointer" }}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 2,
+                    cursor: "pointer",
+                  }}
                   onClick={() => (window.location.href = "tel:+918807122992")}
                 >
                   <PhoneIcon />
@@ -132,8 +154,14 @@ export default function ContactWithMap() {
                     +91 88071 22992
                   </Typography>
                 </Box>
+
                 <Box
-                  sx={{ display: "flex", alignItems: "center", gap: 2, cursor: "pointer" }}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 2,
+                    cursor: "pointer",
+                  }}
                   onClick={() => (window.location.href = "tel:+919691455668")}
                 >
                   <PhoneIcon sx={{ visibility: "hidden" }} />
@@ -143,7 +171,12 @@ export default function ContactWithMap() {
                 </Box>
 
                 <Box
-                  sx={{ display: "flex", alignItems: "center", gap: 2, cursor: "pointer" }}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 2,
+                    cursor: "pointer",
+                  }}
                   onClick={() =>
                     (window.location.href = "mailto:bonitaapudukkottai@gmail.com")
                   }
@@ -155,7 +188,12 @@ export default function ContactWithMap() {
                 </Box>
 
                 <Box
-                  sx={{ display: "flex", alignItems: "center", gap: 2, cursor: "pointer" }}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 2,
+                    cursor: "pointer",
+                  }}
                   onClick={() =>
                     window.open(
                       "https://www.google.com/maps/search/?api=1&query=Jaya+Towers,+S+2,+Second+Floor,+East+Second+Street,+Pudukkottai+622001",
@@ -165,7 +203,7 @@ export default function ContactWithMap() {
                 >
                   <LocationOnIcon />
                   <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                    Jaya Towers, S 2, Second Floor,East Second Street,Pudukkottai - 622001
+                    Jaya Towers, S 2, Second Floor, East Second Street, Pudukkottai - 622001
                   </Typography>
                 </Box>
               </Box>
@@ -213,6 +251,7 @@ export default function ContactWithMap() {
                         required
                       />
                     </Grid>
+
                     <Grid size={{ xs: 12, sm: 6 }}>
                       <TextField
                         label="Last Name"
@@ -233,6 +272,7 @@ export default function ContactWithMap() {
                         required
                       />
                     </Grid>
+
                     <Grid size={{ xs: 12, sm: 6 }}>
                       <TextField
                         label="Email"
@@ -270,7 +310,7 @@ export default function ContactWithMap() {
                       />
                     </Grid>
 
-                    <Grid size={{ xs: 12, sm: 12 }}>
+                    <Grid size={{ xs: 12 }}>
                       <TextField
                         select
                         label="Treatment"

@@ -11,8 +11,8 @@ import {
   Alert,
 } from "@mui/material";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // ✅ navigate hook
-import BgImage from "../assets/Hero.png"; // <-- replace with your image path
+import { useNavigate } from "react-router-dom";
+import BgImage from "../assets/Hero.png"; // ✅ background image
 
 const treatments = ["Skin Treatment", "Hair Treatment"];
 
@@ -40,6 +40,17 @@ export default function AppointmentFormWhite() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async () => {
+    // ✅ Mobile number validation
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phonePattern.test(formData.phone)) {
+      setSnackbar({
+        open: true,
+        message: "Invalid phone number. Please enter 10 digits only.",
+        severity: "error",
+      });
+      return;
+    }
+
     try {
       await axios.post(
         "https://bonitaa-dvcfa6dwdvaxeagp.centralindia-01.azurewebsites.net/api/bookAppointment",
@@ -87,7 +98,7 @@ export default function AppointmentFormWhite() {
     }
   };
 
-  // ✅ Glassmorphic style for input fields
+  // ✅ Glassmorphic input styling
   const glassTextField = {
     "& .MuiInputBase-root": {
       borderRadius: "10px",
@@ -113,11 +124,11 @@ export default function AppointmentFormWhite() {
       color: "#fff",
     },
     "& .MuiSvgIcon-root": {
-      color: "#fff", // ✅ Material-UI icons
+      color: "#fff",
     },
     "& input[type='date']::-webkit-calendar-picker-indicator, \
    & input[type='time']::-webkit-calendar-picker-indicator": {
-      filter: "invert(1)", // ✅ makes calendar/clock icon white
+      filter: "invert(1)",
     },
   };
 
@@ -131,13 +142,12 @@ export default function AppointmentFormWhite() {
         px: 2,
         mt: -6,
         py: 3,
-        backgroundImage: `url(${BgImage})`, // ✅ Background image
+        backgroundImage: `url(${BgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Outer dark transparent box */}
       <Paper
         elevation={6}
         sx={{
@@ -145,7 +155,7 @@ export default function AppointmentFormWhite() {
           p: 4,
           borderRadius: 3,
           border: "5px solid white",
-          backgroundColor: "rgba(0, 0, 0, 0.70)", // ✅ black transparent background
+          backgroundColor: "rgba(0, 0, 0, 0.70)",
           backdropFilter: "blur(15px)",
         }}
       >
@@ -278,7 +288,6 @@ export default function AppointmentFormWhite() {
         </Box>
       </Paper>
 
-      {/* Snackbar */}
       <Snackbar
         open={snackbar.open}
         autoHideDuration={4000}
